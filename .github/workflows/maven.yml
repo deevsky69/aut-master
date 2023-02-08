@@ -22,14 +22,37 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-      - name: Building Container
-        run: docker build -t my-apache2 .
+      - name: Building container
+        run: docker build -t my-apache2
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d my-apache2
       - name: check server
         run: curl http://localhost:80
-      - name: Stop Docker
-        run: docker stop docker-apache
+      - name: Install Google Chrome
+        run:  |
+               chmod +x ./InstallChrome.sh
+               ./InstallChrome.sh
+
+
+
+
+
+      # - name: Checkout the repo
+      #   uses: actions/checkout@v3
+      # - name: Building Container
+      #   run: docker build -t my-apache2 .
+      # - name: run Docker
+      #   run: docker run -d -p 80:80 --name docker-apache -d my-apache2
+      # - name: check server
+      #   run: curl http://localhost:80
+      # - name: Stop Docker
+      #   run: docker stop docker-apache
+
+
+
+
+
+
     # - name: Checkout the repo
     #   uses: actions/checkout@v3
     # - name: Install Google Chrome
